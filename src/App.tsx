@@ -8,24 +8,6 @@ import { NewsItem, Profile, LoginResponse } from './types.ts'
 
 import "./App.css";
 
-// type NewsItem = {
-//   id: number;
-//   image: string;
-//   title: string;
-//   content: string;
-// };
-
-// type Profile = {
-//   id: number;
-//   login: string;
-//   name: string;
-//   avatar: string;
-// };
-
-// type LoginResponse = {
-//   token: string;
-// };
-
 function App() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -33,7 +15,7 @@ function App() {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
 
-  const API_HOST = import.meta.env.VITE_HOST || "http://localhost:7070";
+  const API_HOST = import.meta.env.VITE_HOST;
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem("token");
@@ -52,7 +34,7 @@ function App() {
       fetchNews(setNews);
       setIsLoggedIn(true);
     }
-  }, [fetchProfile, fetchNews]);//warum
+  }, [fetchProfile, fetchNews]);
 
 
   const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
